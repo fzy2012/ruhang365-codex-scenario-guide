@@ -44,6 +44,6 @@ python3 scripts/check_official_updates.py
 
 - 本地 MVP：已建立
 - 更新检测：已提供官方 RSS 差异与场景影响候选脚本，尚未形成发布内容
-- GitHub 远程仓库：已创建，当前尚未提交或推送产品文件
+- GitHub 远程仓库：V1 已公开发布，可克隆后按本页步骤本地运行
 - RHZL：本地隔离分支已实现 `/tools/lab/codex-scenario-guide` 可用投影，尚未提交、推送或部署
 - 部署与发布：未执行
