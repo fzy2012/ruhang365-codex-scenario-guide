@@ -45,5 +45,5 @@ python3 scripts/check_official_updates.py
 - 本地 MVP：已建立
 - 更新检测：已提供官方 RSS 差异与场景影响候选脚本，尚未形成发布内容
 - GitHub 远程仓库：V1 已公开发布，可克隆后按本页步骤本地运行
-- RHZL：本地隔离分支已实现 `/tools/lab/codex-scenario-guide` 可用投影，尚未提交、推送或部署
-- 部署与发布：未执行
+- RHZL：已在分支 `codex/codex-scenario-guide-rhzl-20260821` 提交并推送 `/tools/lab/codex-scenario-guide` 投影
+- 部署与发布：已于 2026-08-21 部署至入行之路生产环境；RHZL 分支尚未合并至 `main`
