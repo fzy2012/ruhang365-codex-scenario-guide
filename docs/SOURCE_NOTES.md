@@ -1,6 +1,6 @@
 # 来源研究说明
 
-核验日期：2026-08-21
+核验日期：2026-08-23
 
 ## Serena 教程
 
@@ -13,14 +13,27 @@
 
 - 产品总览：<https://learn.chatgpt.com/>
   - 用于区分 Chat、ChatGPT Work 与 Codex 的主要任务类型。
+- Use ChatGPT：<https://learn.chatgpt.com/docs/use-chatgpt>
+  - 用于核验 Chat、ChatGPT Work 与 Codex 的任务分工。
+- Prompting：<https://learn.chatgpt.com/docs/prompting>
+  - 用于核验“结果、背景、输出、边界”的任务描述方法。
 - Projects and chats：<https://learn.chatgpt.com/docs/projects>
   - 用于核验 Quick chat、Project、本地项目、共享资料和文件夹访问边界。
+- Permissions：<https://learn.chatgpt.com/docs/permission-modes>
+  - 用于核验桌面端权限模式、工作区边界和 Ask for approval 默认建议。
 - Scheduled tasks：<https://learn.chatgpt.com/docs/automations>
   - 用于核验定时任务入口；产品仍要求先手动跑通流程。
 - Troubleshooting：<https://learn.chatgpt.com/docs/reference/troubleshooting>
   - 用于失败诊断场景的官方入口。
 - ChatGPT & Codex Changelog：<https://learn.chatgpt.com/docs/changelog>
   - 页面是内容证据入口；脚本读取页面声明的官方 RSS，以获得稳定的条目级差异。
+
+## 已人工核验的更新说明
+
+- 官方发布日期：2026-08-20
+- 内容：ChatGPT macOS 桌面应用可以分享本地 Codex 线程的不可变只读快照；个人链接和工作区链接的访问范围不同。
+- 本项目处理：原创改写为 `update-shared-thread-snapshots`，并明确提醒已知密钥模式遮盖不代表敏感内容一定清除。
+- 当前不能证明：Windows、Web、CLI 或所有组织策略下存在相同入口；功能已对所有地区同时开放。
 
 ## 不能据此证明
 

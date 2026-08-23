@@ -107,7 +107,7 @@ def build_candidate(changes: list[dict[str, str]], observed_at: str) -> dict[str
             "对 removed 只解释为当前 RSS 快照不再包含，不得直接写成功能下线",
             "确认是否真的改变某个 V1 场景的入口或步骤",
             "补充套餐、地区、工作区和灰度范围",
-            "确认后再人工修改 scenarios.json",
+            "确认后再人工修改 guide.json，并更新受影响的 manual、update 与 solution 关联",
         ],
         "cannot_prove": [
             "功能已对所有用户可用",

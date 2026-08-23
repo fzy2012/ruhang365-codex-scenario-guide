@@ -3,66 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="按使用场景找到正确的 Codex 入口、步骤与可复制任务描述。" />
+    <meta name="description" content="搜索 Codex 使用手册、官方更新与场景解决方案。" />
     <title>Codex 场景导航器</title>
     <link rel="icon" href="data:," />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main>
-      <header class="brand" aria-label="Codex 场景导航器">
-        <span class="brand-codex">Codex</span><span>场景导航器</span>
-      </header>
-
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Codex 场景导航器首页"><span>Codex</span> 场景导航器</a>
+      <a class="help-link" href="#starter">使用说明</a>
+    </header>
+    <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">不用先学功能，先说你想完成什么。</h1>
-        <p>输入一个真实场景，我们只推荐一个默认入口，并给出能直接开始的步骤。</p>
-        <form id="scenario-form">
-          <label for="scenario-input">我想用 Codex……</label>
-          <div class="search-row">
-            <input id="scenario-input" autocomplete="off" placeholder="例如：帮我修改网站、整理文件、持续做内容" />
-            <button type="submit" disabled>正在加载路线…</button>
+        <h1 id="hero-title">想用 Codex 做什么？从这里开始。</h1>
+        <p>搜索功能、问题或场景，找到一个可以直接照着做的答案。</p>
+        <form id="search-form" role="search">
+          <label class="sr-only" for="search-input">搜索功能、问题或场景</label>
+          <div class="search-box">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+            <input id="search-input" autocomplete="off" placeholder="例如：怎么选择 Chat 或 Work、修改网站、任务卡住了" />
+            <button type="submit" disabled>正在加载…</button>
           </div>
-          <p class="local-note">输入只在当前页面本地匹配，不会发送给模型。</p>
+          <p>搜索只在当前页面本地完成，不会把输入发送给模型。</p>
         </form>
-        <div id="recommendation" class="recommendation" aria-live="polite" hidden></div>
       </section>
-
-      <section class="browse" aria-labelledby="browse-title">
-        <div class="route-marker" aria-hidden="true">2</div>
-        <div class="section-heading">
-          <div>
-            <h2 id="browse-title">从正在做的事开始</h2>
-            <p>选择一个与你当前任务最接近的场景。</p>
+      <nav id="content-filters" class="filters" aria-label="内容类型">
+        <button class="active" type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" data-filter="manual" aria-pressed="false">使用手册</button>
+        <button type="button" data-filter="update" aria-pressed="false">最近更新</button>
+        <button type="button" data-filter="solution" aria-pressed="false">场景解决方案</button>
+      </nav>
+      <div class="content-layout">
+        <section class="results" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div><h2 id="results-title">全部内容</h2><p id="results-count" aria-live="polite">正在加载内容…</p></div>
+            <button id="clear-search" type="button" hidden>清除搜索</button>
           </div>
-          <p>每条路线都有默认入口、分步操作、可复制任务描述、成功判断和失败恢复。</p>
-        </div>
-        <div id="scenario-grid" class="scenario-grid" aria-live="polite"></div>
-      </section>
-
-      <section class="updates" aria-labelledby="updates-title">
-        <div class="shield" aria-hidden="true">✓</div>
-        <div class="updates-copy">
-          <h2 id="updates-title">官方变化先进入人工确认</h2>
-          <p>只从 OpenAI 官方更新源发现变化；差异与可能受影响的场景先生成待审核候选，未经确认不会进入用户指南。</p>
-          <a href="https://learn.chatgpt.com/docs/changelog" target="_blank" rel="noreferrer">查看官方 ChatGPT &amp; Codex Changelog</a>
-        </div>
-        <ol class="review-flow" aria-label="更新审核流程">
-          <li><span>1</span><strong>发现差异</strong><small>读取官方 RSS</small></li>
-          <li><span>2</span><strong>判断影响</strong><small>关联可能场景</small></li>
-          <li><span>3</span><strong>人工确认</strong><small>核验适用范围</small></li>
-          <li><span>4</span><strong>再更新指南</strong><small>本轮不自动发布</small></li>
-        </ol>
-      </section>
+          <div id="content-list" class="content-list" aria-live="polite"></div>
+        </section>
+        <aside class="side-rail" aria-label="推荐阅读">
+          <section id="starter"><h2>新手先看</h2><ol id="starter-list"></ol></section>
+          <section><h2>最近更新</h2><div id="update-list"></div><button type="button" class="text-button" data-set-filter="update">查看全部更新</button></section>
+          <p class="review-note">只有人工核验、状态为 published 的内容才会在这里出现。</p>
+        </aside>
+      </div>
     </main>
-
-    <dialog id="scenario-dialog" aria-labelledby="dialog-title">
-      <button id="dialog-close" class="dialog-close" type="button" aria-label="关闭">
-        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19" /></svg>
-      </button>
+    <footer>
+      <p>内容由本项目维护，功能事实以 OpenAI 官方资料为准。</p>
+      <a href="https://learn.chatgpt.com/docs/changelog" target="_blank" rel="noreferrer">官方 ChatGPT &amp; Codex Changelog</a>
+    </footer>
+    <dialog id="content-dialog" aria-labelledby="dialog-title">
+      <button id="dialog-close" class="dialog-close" type="button" aria-label="关闭详情"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19" /></svg></button>
       <div id="dialog-content"></div>
     </dialog>
-
     <script src="app.js" defer></script>
   </body>
 </html>
