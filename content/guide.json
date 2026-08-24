@@ -111,6 +111,163 @@
       }
     },
     {
+      "id": "manual-learning-path",
+      "permalink": "#manual-learning-path",
+      "content_type": "manual",
+      "title": "第一次学 Codex，先掌握这四层",
+      "summary": "先跑通真实任务，再按需要学习并行工作、扩展能力和自动化。",
+      "keywords": ["入门", "学习路线", "新手", "先学什么", "第一次", "教程"],
+      "product_surface": ["ChatGPT Desktop", "Codex"],
+      "audience": ["第一次使用 Codex、担心功能太多学不会的用户"],
+      "prerequisites": ["准备一个真实且范围较小的任务"],
+      "official_sources": [
+        {"label": "OpenAI：Best practices", "url": "https://learn.chatgpt.com/docs/learn/best-practices"},
+        {"label": "OpenAI：Codex environments", "url": "https://learn.chatgpt.com/docs/environments/modes"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-24",
+      "availability_scope": "面向 ChatGPT 桌面应用中的 Codex 新手；学习顺序是本指南建议",
+      "related_content_ids": ["manual-projects", "manual-write-task", "manual-app-review", "manual-work-modes", "manual-extensions"],
+      "status": "published",
+      "limitations": ["这套顺序不是 OpenAI 官方规定的课程", "无需为了完成简单任务预先学习所有高级能力"],
+      "featured_order": 0.5,
+      "action": {
+        "entry": "从一个范围小、结果可检查的真实任务开始",
+        "reason": "先掌握项目、任务描述、权限和改动检查，就能完成第一个闭环；其他能力遇到真实需要再学。",
+        "steps": ["第一层：学会打开正确项目、描述一个结果、控制权限，并在 Diff 中检查改动。", "第二层：任务较复杂时，先让 Codex 给出计划；完成后查看验证证据。", "第三层：确实要并行处理多个代码任务时，再学习 Worktree 和 Handoff。", "第四层：出现重复流程、外部工具或定期任务后，再按需学习 Skill、Plugin、MCP 和 Scheduled task。"],
+        "example": "我是第一次使用 Codex。我要完成：___。请只推荐一个起点，先告诉我需要打开什么项目、允许什么权限、怎样判断结果成功；不要一次介绍所有高级功能。",
+        "success_signals": ["一分钟内能开始一个真实任务", "知道在哪里检查结果和改动", "只学习当前任务真正需要的下一层能力"],
+        "recovery": "如果信息太多，回到第一层，只保留当前任务、正确项目、最小权限和一个可观察的成功判断。"
+      }
+    },
+    {
+      "id": "manual-app-review",
+      "permalink": "#manual-app-review",
+      "content_type": "manual",
+      "title": "看懂 Codex 界面与 Diff",
+      "summary": "从聊天查看过程，从 Review pane 检查仓库实际改动，再决定是否接受。",
+      "keywords": ["界面", "Diff", "Review pane", "审查", "改动", "Last turn", "Staged", "Unstaged"],
+      "product_surface": ["ChatGPT Desktop", "Codex", "Git"],
+      "audience": ["需要检查 Codex 是否改对文件的桌面端用户"],
+      "prerequisites": ["当前项目位于 Git 仓库内"],
+      "official_sources": [
+        {"label": "OpenAI：Code review", "url": "https://learn.chatgpt.com/docs/code-review"},
+        {"label": "OpenAI：Glossary", "url": "https://learn.chatgpt.com/docs/glossary"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-24",
+      "availability_scope": "ChatGPT 桌面应用中的 Git 项目；Review pane 需要项目位于 Git 仓库内",
+      "related_content_ids": ["manual-projects", "manual-permissions", "solution-website-change", "solution-troubleshoot"],
+      "status": "published",
+      "limitations": ["Review pane 显示的是仓库状态，不只包含 Codex 的改动", "检查 Diff 不等于功能已经通过运行验证"],
+      "featured_order": 5,
+      "action": {
+        "entry": "当前 Codex chat 右侧的 Review pane",
+        "reason": "聊天记录说明 Codex 做了什么，Diff 才能显示 Git 仓库中具体增加、删除或修改了哪些行。",
+        "steps": ["先在聊天中确认 Codex 报告的完成结果和验证命令。", "打开 Review pane，先看 Unstaged、Staged 或 Branch 等当前审查范围。", "只想看 Codex 最近一轮时选择 Last turn；要看仓库全部未提交改动时查看 Unstaged。", "逐个文件检查是否有无关改动；需要精确反馈时，在具体行留下 inline comment。", "确认实际功能和验证证据后，再决定是否 stage、commit 或 push。"],
+        "example": "请先不要提交或推送。说明本轮修改了哪些文件、每个改动支撑什么用户结果、运行了哪些验证；如果仓库中还有其他未提交改动，请明确区分。",
+        "success_signals": ["能说清 Last turn 与仓库全部未提交改动的差别", "每个改动文件都能对应到任务目标", "功能验证与 Diff 检查都已完成"],
+        "recovery": "如果 Diff 中出现不认识的改动，先停止后续操作，核对当前仓库和审查范围；不要直接 Revert，因为那些改动可能来自你或其他任务。"
+      }
+    },
+    {
+      "id": "manual-work-modes",
+      "permalink": "#manual-work-modes",
+      "content_type": "manual",
+      "title": "选择 Local、Worktree 还是 Cloud",
+      "summary": "按工作发生在哪里、是否需要隔离和能否使用远程环境选择运行方式。",
+      "keywords": ["Local", "Worktree", "Cloud", "本地", "云端", "并行", "隔离", "Handoff"],
+      "product_surface": ["ChatGPT Desktop", "Codex"],
+      "audience": ["准备开始代码任务、但不确定运行环境的用户"],
+      "prerequisites": ["已经打开正确项目", "使用 Worktree 时项目必须是 Git 仓库"],
+      "official_sources": [
+        {"label": "OpenAI：Codex environments", "url": "https://learn.chatgpt.com/docs/environments/modes"},
+        {"label": "OpenAI：Worktrees", "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-24",
+      "availability_scope": "ChatGPT 桌面应用；Local 与 Worktree 都在当前电脑运行，Cloud 在配置好的远程环境运行",
+      "related_content_ids": ["manual-projects", "manual-app-review", "solution-website-change", "solution-recurring-automation"],
+      "status": "published",
+      "limitations": ["Worktree 仅适用于 Git 仓库", "Cloud 是否可用以及能访问什么由账户、工作区和云环境配置决定", "被 .gitignore 忽略的本地文件默认不会随 Handoff 自动移动"],
+      "featured_order": 6,
+      "action": {
+        "entry": "新建 Codex chat 时输入框下方的环境选择",
+        "reason": "Local 直接处理当前目录；Worktree 为并行任务提供隔离副本；Cloud 在 OpenAI 管理的已配置环境中远程运行。",
+        "steps": ["只有一个任务、需要直接使用当前电脑上的文件和工具时，默认选 Local。", "需要与当前本地工作并行、又不想互相干扰时，选择 Worktree。", "选择 Worktree 前确认项目是 Git 仓库，并知道后续是在该 worktree 验证，还是用 Handoff 移回 Local。", "只有远程环境已配置、任务边界清楚且不依赖仅存在于本机的内容时，才选择 Cloud。"],
+        "example": "我要处理：___。这个任务是否依赖只存在于本机的文件或服务：___；是否要与另一项代码工作并行：___。请只推荐 Local、Worktree 或 Cloud 其中一个，并说明验证应在哪里进行。",
+        "success_signals": ["工作发生在预期的本地、隔离副本或云环境中", "并行任务没有污染当前 Local 工作区", "验证环境与最终使用环境相符"],
+        "recovery": "如果选错环境，先停止写入并保留当前状态；Worktree 可通过 Handoff 安全移向 Local。不要手工复制不明文件或覆盖已有本地改动。"
+      }
+    },
+    {
+      "id": "manual-plan-verify",
+      "permalink": "#manual-plan-verify",
+      "content_type": "manual",
+      "title": "复杂任务先计划，再验证结果",
+      "summary": "计划用于降低复杂任务的不确定性；验证用于证明结果，而不是相信“已经完成”。",
+      "keywords": ["Plan", "计划", "验证", "测试", "复杂任务", "成功证据", "完成"],
+      "product_surface": ["ChatGPT Desktop", "Codex"],
+      "audience": ["任务涉及多个步骤、文件或高风险操作的用户"],
+      "prerequisites": ["已写清目标结果和不能越过的边界"],
+      "official_sources": [
+        {"label": "OpenAI：Best practices", "url": "https://learn.chatgpt.com/docs/learn/best-practices"},
+        {"label": "OpenAI：Prompting", "url": "https://learn.chatgpt.com/docs/prompting"},
+        {"label": "OpenAI：Code review", "url": "https://learn.chatgpt.com/docs/code-review"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-24",
+      "availability_scope": "适用于桌面应用、CLI、IDE 和 Cloud 中的复杂 Codex 任务；具体计划交互随界面而异",
+      "related_content_ids": ["manual-write-task", "manual-app-review", "solution-website-change", "solution-troubleshoot"],
+      "status": "published",
+      "limitations": ["简单且低风险的任务不必强制先写长计划", "计划获批不代表执行正确", "测试通过仍需检查用户可见结果和无关改动"],
+      "featured_order": 7,
+      "action": {
+        "entry": "复杂任务的当前 Codex chat",
+        "reason": "先让 Codex调查并提出可审阅步骤，可以及早发现错误方向；执行后仍要用行为、测试和 Diff 分别验证。",
+        "steps": ["先说明用户结果、当前背景、不可改范围和成功证据。", "任务涉及多个模块、方案不确定或风险较高时，要求先调查并给出简短计划，本轮不修改。", "检查计划是否覆盖关键路径、验证方式和高风险动作，再明确授权执行。", "完成后要求提供实际运行结果，并亲自检查用户可见行为。", "打开 Diff 核对改动范围；把实现、验证、提交、推送和部署分别判断。"],
+        "example": "请先只读调查并给出最小计划，本轮不要修改。目标结果：___；不能改变：___；成功证据：___。计划中列出要触碰的文件、验证方式和需要我单独确认的动作。",
+        "success_signals": ["执行前能看懂方案与影响范围", "完成后有可复查的行为或测试证据", "未把提交、推送或部署混同于功能完成"],
+        "recovery": "如果计划太泛，要求只列第一个端到端阻塞和验证；如果执行结果与计划偏离，停止后续动作并对照 Diff 和日志解释差异。"
+      }
+    },
+    {
+      "id": "manual-extensions",
+      "permalink": "#manual-extensions",
+      "content_type": "manual",
+      "title": "分清 Skill、Plugin 与 MCP",
+      "summary": "Skill 保存可复用做法，Plugin 打包可安装能力，MCP 连接外部工具和资料。",
+      "keywords": ["Skill", "Plugin", "MCP", "技能", "插件", "连接器", "外部工具", "扩展"],
+      "product_surface": ["ChatGPT Desktop", "Codex", "CLI", "IDE extension"],
+      "audience": ["已经会完成基本任务、准备扩展 Codex 能力的用户"],
+      "prerequisites": ["已有一个反复出现的工作流或明确的外部系统需求"],
+      "official_sources": [
+        {"label": "OpenAI：Skills", "url": "https://learn.chatgpt.com/docs/skills"},
+        {"label": "OpenAI：Build plugins", "url": "https://learn.chatgpt.com/docs/build-plugins"},
+        {"label": "OpenAI：Model Context Protocol", "url": "https://learn.chatgpt.com/docs/extend/mcp"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-24",
+      "availability_scope": "Skill 和 Plugin 可用入口取决于支持的 ChatGPT/Codex 界面；本地 Codex 客户端可共享 MCP 配置",
+      "related_content_ids": ["manual-learning-path", "manual-permissions", "solution-recurring-automation"],
+      "status": "published",
+      "limitations": ["安装 Plugin 或连接 MCP 可能引入新的数据访问和外部操作权限", "一次性简单任务通常不需要创建扩展", "不同客户端支持的能力可能不同"],
+      "featured_order": 8,
+      "action": {
+        "entry": "先从当前重复问题判断需要哪一类扩展",
+        "reason": "三者解决的问题不同：Skill 复用步骤和标准；Plugin 可安装并打包 Skill、MCP 等能力；MCP 为模型提供外部工具与上下文连接。",
+        "steps": ["同一做法反复出现、主要需要固定步骤或参考资料时，先考虑 Skill。", "需要把成熟能力安装、分享给团队，或把多个 Skill 与外部连接打包时，考虑 Plugin。", "需要直接读取或操作外部系统，而且已有合适服务端时，考虑 MCP。", "安装或连接前检查来源、权限、认证方式和会执行的写操作。", "用一个代表性任务验证结果，再决定是否长期保留。"],
+        "example": "我反复需要完成：___。需要访问的外部系统是：___；是否要分享给别人：___。请判断应使用 Skill、Plugin、MCP，还是暂时都不用，并说明最小验证任务和权限风险。",
+        "success_signals": ["只引入解决当前重复问题所需的最小能力", "知道扩展会读取什么、能执行什么", "代表性任务可复现且不依赖未说明的人工补救"],
+        "recovery": "如果扩展行为不清楚，先禁用或停止使用，检查其说明、权限和来源；不要用扩大权限解决配置不明的问题。"
+      }
+    },
+    {
       "id": "update-shared-thread-snapshots",
       "permalink": "#update-shared-thread-snapshots",
       "content_type": "update",

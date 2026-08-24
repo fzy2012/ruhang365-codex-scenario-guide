@@ -30,7 +30,7 @@ python3 scripts/check_official_updates.py
 
 ## 内容来源边界
 
-- 种子研究材料：[Serena 的 Codex 从 0 到 1 教程](https://x.com/369serena/status/2090051691819221248?s=46)
+- 种子研究材料：[Serena 的 Codex 从 0 到 1 教程](https://x.com/369serena/status/2090051691819221248?s=46)、[Miles Ma 的《Codex 从入门到精通》](https://x.com/miles_mazy/status/2091339513134010554?s=46)
 - 官方更新源：[ChatGPT & Codex Changelog](https://learn.chatgpt.com/docs/changelog)
 
 研究材料只用于识别用户问题和场景，不原样复制。官方更新由脚本检测变化后生成待人工确认候选，不会自动发布。
@@ -46,7 +46,7 @@ python3 scripts/check_official_updates.py
 
 - 产品需求：已校正为“使用手册 + 新功能说明 + 快速查找交互”的 Codex Guide
 - 当前本地版本：`content/guide.json` 是 manual、update、solution 的统一内容源；`content/scenarios.json` 暂作既有场景契约兼容快照，并由校验脚本检查一致性
-- 使用手册：已提供入口选择、Project、任务描述、权限四篇代表性核心手册
+- 使用手册：已提供入口选择、Project、任务描述、权限、学习路线、界面与 Diff、运行环境、计划与验证、扩展能力共九篇核心手册
 - 新功能说明：已把 2026-08-20 官方“本地 Codex 线程只读分享快照”变化人工核验为可浏览内容；RSS 差异脚本仍只生成 `pending_review` 候选
 - 搜索与浏览：确定性搜索和类型筛选覆盖全部已发布手册、更新和 8 个场景；未知查询不猜答案
 - GitHub 远程仓库：V1 已公开发布，可克隆后按本页步骤本地运行

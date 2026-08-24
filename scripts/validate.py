@@ -118,6 +118,7 @@ def main() -> int:
         assert item["content_type"] in {"manual", "update", "solution"}
         assert item["official_sources"], f"{item['id']} requires an official source"
         assert all(source["url"].startswith("https://") for source in item["official_sources"])
+        assert all(source["url"].startswith("https://") for source in item.get("research_sources", []))
         assert item["availability_scope"].strip()
         assert item["limitations"]
         assert item["action"].get("steps")
@@ -145,6 +146,7 @@ def main() -> int:
     assert "if (!contents.length)" in app, "loading race must be handled"
     assert 'fetch("content/guide.json")' in app
     assert 'item.status === "published"' in app, "unreviewed content must not be visible"
+    assert "item.research_sources" in app, "research materials must be visibly distinguished from official sources"
     assert "eyebrow" not in html
     validate_update_logic()
     print(f"PASS: {len(contents)} unified entries ({len(solutions)} solutions), UI contract, sources, and update-candidate logic are valid")

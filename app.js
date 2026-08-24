@@ -77,7 +77,10 @@ function renderContent() {
 }
 
 function renderRail() {
-  const starters = contents.filter((item) => item.content_type === "manual" && item.status === "published").slice(0, 4);
+  const starters = contents
+    .filter((item) => item.content_type === "manual" && item.status === "published")
+    .sort((a, b) => (a.featured_order || 100) - (b.featured_order || 100))
+    .slice(0, 5);
   starterList.innerHTML = starters.map((item, index) => `<li><button type="button" data-id="${escapeHtml(item.id)}"><span>${index + 1}</span>${escapeHtml(item.title)}${arrowIcon()}</button></li>`).join("");
   const updates = contents.filter((item) => item.content_type === "update" && item.status === "published").slice(0, 3);
   updateList.innerHTML = updates.map((item) => `<button class="rail-update" type="button" data-id="${escapeHtml(item.id)}"><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.official_published_at || item.verified_at)}</small></button>`).join("");
@@ -98,8 +101,8 @@ async function copyText(text) {
   if (!copied) throw new Error("clipboard unavailable");
 }
 
-function sourcesHtml(item) {
-  return item.official_sources.map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`).join("");
+function sourcesHtml(sources = []) {
+  return sources.map((source) => `<a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">${escapeHtml(source.label)}</a>`).join("");
 }
 
 function sectionList(title, items) {
@@ -114,7 +117,8 @@ function openContent(item) {
   const updateIntro = item.content_type === "update" ? `<section class="detail-section"><h3>发生了什么</h3><p>${escapeHtml(action.what_changed)}</p></section>` : "";
   const entry = action.entry ? `<div class="entry-callout"><span>${item.content_type === "solution" ? "推荐入口" : "从这里开始"}</span><strong>${escapeHtml(action.entry)}</strong>${action.reason ? `<p>${escapeHtml(action.reason)}</p>` : ""}</div>` : "";
   const copyable = action.example ? `<section class="detail-section"><h3>${item.content_type === "solution" ? "可以直接复制" : "示例任务描述"}</h3><div class="copy-box"><p>${escapeHtml(action.example)}</p><button class="copy-button" type="button">复制任务描述</button></div></section>` : "";
-  dialogContent.innerHTML = `<span class="detail-type">${TYPE_LABELS[item.content_type]}</span><h2 id="dialog-title">${escapeHtml(item.title)}</h2><p class="detail-summary">${escapeHtml(item.summary)}</p><div class="scope-line"><span>${escapeHtml(item.product_surface.join(" · "))}</span><span>核验于 ${escapeHtml(item.verified_at)}</span><span>${escapeHtml(item.availability_scope)}</span></div>${entry}${updateIntro}${sectionList(item.content_type === "update" ? "怎样尝试" : "操作步骤", action.steps)}${copyable}<div class="outcome-grid"><section><h3>成功判断</h3><ul>${(action.success_signals || []).map((signal) => `<li>${escapeHtml(signal)}</li>`).join("")}</ul></section><section><h3>卡住时</h3><p>${escapeHtml(action.recovery)}</p></section></div><section class="evidence"><h3>依据与适用范围</h3><div class="source-links">${sourcesHtml(item)}</div><p><strong>前置条件：</strong>${escapeHtml(item.prerequisites.join("；") || "无特别前置条件")}</p><p><strong>限制说明：</strong>${escapeHtml(item.limitations.join("；"))}</p></section>${related.length ? `<section class="related"><h3>相关内容</h3>${related.map((target) => `<button type="button" data-related-id="${escapeHtml(target.id)}"><span>${TYPE_LABELS[target.content_type]}</span>${escapeHtml(target.title)}${arrowIcon()}</button>`).join("")}</section>` : ""}`;
+  const researchSources = item.research_sources?.length ? `<p><strong>研究材料：</strong></p><div class="source-links">${sourcesHtml(item.research_sources)}</div>` : "";
+  dialogContent.innerHTML = `<span class="detail-type">${TYPE_LABELS[item.content_type]}</span><h2 id="dialog-title">${escapeHtml(item.title)}</h2><p class="detail-summary">${escapeHtml(item.summary)}</p><div class="scope-line"><span>${escapeHtml(item.product_surface.join(" · "))}</span><span>核验于 ${escapeHtml(item.verified_at)}</span><span>${escapeHtml(item.availability_scope)}</span></div>${entry}${updateIntro}${sectionList(item.content_type === "update" ? "怎样尝试" : "操作步骤", action.steps)}${copyable}<div class="outcome-grid"><section><h3>成功判断</h3><ul>${(action.success_signals || []).map((signal) => `<li>${escapeHtml(signal)}</li>`).join("")}</ul></section><section><h3>卡住时</h3><p>${escapeHtml(action.recovery)}</p></section></div><section class="evidence"><h3>依据与适用范围</h3><p><strong>官方依据：</strong></p><div class="source-links">${sourcesHtml(item.official_sources)}</div>${researchSources}<p><strong>前置条件：</strong>${escapeHtml(item.prerequisites.join("；") || "无特别前置条件")}</p><p><strong>限制说明：</strong>${escapeHtml(item.limitations.join("；"))}</p></section>${related.length ? `<section class="related"><h3>相关内容</h3>${related.map((target) => `<button type="button" data-related-id="${escapeHtml(target.id)}"><span>${TYPE_LABELS[target.content_type]}</span>${escapeHtml(target.title)}${arrowIcon()}</button>`).join("")}</section>` : ""}`;
   dialog.showModal();
   dialog.scrollTop = 0;
   const copyButton = dialogContent.querySelector(".copy-button");
