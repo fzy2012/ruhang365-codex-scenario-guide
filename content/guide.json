@@ -40,6 +40,7 @@
       "audience": ["需要持续复用资料或完成多个相关成果的用户"],
       "prerequisites": ["已明确一个持续目标", "知道哪些资料属于这个目标"],
       "official_sources": [{"label": "OpenAI：Projects and chats", "url": "https://learn.chatgpt.com/docs/projects"}],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
       "official_published_at": null,
       "verified_at": "2026-08-23",
       "availability_scope": "ChatGPT Project 与本地 Project 的资料来源不同",
@@ -246,11 +247,14 @@
       "audience": ["已经会完成基本任务、准备扩展 Codex 能力的用户"],
       "prerequisites": ["已有一个反复出现的工作流或明确的外部系统需求"],
       "official_sources": [
-        {"label": "OpenAI：Skills", "url": "https://learn.chatgpt.com/docs/skills"},
+        {"label": "OpenAI：Skills", "url": "https://learn.chatgpt.com/docs/customization/overview#skills"},
         {"label": "OpenAI：Build plugins", "url": "https://learn.chatgpt.com/docs/build-plugins"},
         {"label": "OpenAI：Model Context Protocol", "url": "https://learn.chatgpt.com/docs/extend/mcp"}
       ],
-      "research_sources": [{"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"}],
+      "research_sources": [
+        {"label": "研究材料：Miles Ma《Codex 从入门到精通》", "url": "https://x.com/miles_mazy/status/2091339513134010554?s=46"},
+        {"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}
+      ],
       "official_published_at": null,
       "verified_at": "2026-08-24",
       "availability_scope": "Skill 和 Plugin 可用入口取决于支持的 ChatGPT/Codex 界面；本地 Codex 客户端可共享 MCP 配置",
@@ -265,6 +269,158 @@
         "example": "我反复需要完成：___。需要访问的外部系统是：___；是否要分享给别人：___。请判断应使用 Skill、Plugin、MCP，还是暂时都不用，并说明最小验证任务和权限风险。",
         "success_signals": ["只引入解决当前重复问题所需的最小能力", "知道扩展会读取什么、能执行什么", "代表性任务可复现且不依赖未说明的人工补救"],
         "recovery": "如果扩展行为不清楚，先禁用或停止使用，检查其说明、权限和来源；不要用扩大权限解决配置不明的问题。"
+      }
+    },
+    {
+      "id": "manual-install-configure",
+      "permalink": "#manual-install-configure",
+      "content_type": "manual",
+      "title": "安全安装软件与配置电脑",
+      "summary": "先盘点真实环境和回退方式，再一次安装一项并用最小样例验收。",
+      "keywords": ["安装软件", "电脑配置", "环境配置", "模型部署", "依赖", "版本", "卸载", "回退"],
+      "product_surface": ["ChatGPT Desktop", "Codex local project"],
+      "audience": ["需要安装软件、配置开发环境或部署本地模型的用户"],
+      "prerequisites": ["已明确要安装的产品及用途", "知道哪些系统级改动必须单独确认"],
+      "official_sources": [
+        {"label": "OpenAI：Permissions", "url": "https://learn.chatgpt.com/docs/permission-modes"},
+        {"label": "OpenAI：Best practices", "url": "https://learn.chatgpt.com/docs/learn/best-practices"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-26",
+      "availability_scope": "适用于能读取本机状态并运行获批命令的 Codex 本地任务；具体安装方式取决于操作系统和软件官方要求",
+      "related_content_ids": ["manual-permissions", "manual-plan-verify", "solution-troubleshoot"],
+      "status": "published",
+      "limitations": ["安装和系统配置可能影响工作区外文件、网络和整台电脑，越界动作必须单独审批", "第三方软件兼容性、磁盘和硬件需求必须以其当前官方资料为准", "不要把密钥直接写入聊天或配置样例"],
+      "featured_order": 9,
+      "action": {
+        "entry": "连接一个只包含配置记录和必要文件的 Codex 本地项目",
+        "reason": "先把系统现状、安装方案、验证和回退写清，可以避免照搬过期命令或同时改乱多个环境。",
+        "steps": ["先只读检查操作系统、芯片、磁盘、现有版本、命令路径和相关配置，不执行安装。", "打开软件当前官方说明，列出下载量、占用空间、会修改的位置、权限需求和回退方法。", "只选择一个最小安装目标；涉及全局安装、覆盖配置、管理员权限或大文件下载时先等待确认。", "执行后检查应用能否启动、版本和路径是否正确，并运行一个最小样例。", "记录安装了什么、改了什么、验证结果和怎样卸载；确认链路后再扩大到插件或更大模型。"],
+        "example": "请先只读检查这台电脑是否适合安装：___。列出当前系统、已有版本、预计下载与占用、会修改的位置、风险和回退方式。本轮不要安装；等我确认后再一次只执行一个步骤。",
+        "success_signals": ["安装方案与当前系统和官方要求相符", "最小样例真实运行成功", "知道新增文件、配置和完整回退方法"],
+        "recovery": "如果中途失败，停止继续叠加命令，保留完整错误和当前状态；按已确认的回退步骤恢复，再只处理第一个版本、路径或权限阻塞。"
+      }
+    },
+    {
+      "id": "manual-material-meeting-summary",
+      "permalink": "#manual-material-meeting-summary",
+      "content_type": "manual",
+      "title": "汇总材料并生成可执行会议纪要",
+      "summary": "先建立来源索引，再分开事实、决定、问题和行动项，关键结论能够回到原文核对。",
+      "keywords": ["会议纪要", "材料汇总", "录音", "转写", "行动项", "负责人", "截止时间", "摘要"],
+      "product_surface": ["ChatGPT Desktop", "ChatGPT Work", "Project"],
+      "audience": ["需要汇总多份文档、网页、聊天或会议材料的用户"],
+      "prerequisites": ["已准备任务需要的材料副本", "知道纪要给谁使用"],
+      "official_sources": [
+        {"label": "OpenAI：Projects and chats", "url": "https://learn.chatgpt.com/docs/projects"},
+        {"label": "OpenAI：Work with files", "url": "https://learn.chatgpt.com/docs/artifacts-viewer"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-26",
+      "availability_scope": "适用于 ChatGPT Project 或 ChatGPT Work 中上传、生成或连接的材料；本地文件访问仍受项目和权限边界约束",
+      "related_content_ids": ["manual-projects", "manual-write-task", "solution-content-project"],
+      "status": "published",
+      "limitations": ["录音转写中的姓名、专有词和数字必须先校对", "来源冲突时只能并列差异，不能自行补成一个确定事实", "涉及金额、日期、承诺和负责人时必须保留出处并人工复核"],
+      "featured_order": 10,
+      "action": {
+        "entry": "包含本次材料的 Project 中启动 ChatGPT Work",
+        "reason": "Project 可复用受控来源，ChatGPT Work 适合把多份材料整理成可审阅的较大交付物。",
+        "steps": ["先为每份材料记录名称、日期、主题和来源，发现缺失或重复时先报告。", "校对录音转写中的姓名、产品名、数字和专业词，再开始归纳。", "把内容分为背景、已确认事实、决定、未解决问题和行动项；冲突说法并列并标注出处。", "生成完整存档版和执行版；执行版只保留决定、负责人、截止时间和下一步。", "抽取关键金额、日期和承诺回到原材料逐项核对，再决定是否对外发送。"],
+        "example": "请先为这些材料建立来源索引，再生成两版纪要：完整存档版，以及只含决定、负责人、截止时间和下一步的执行版。来源冲突请并列，不要猜；所有金额、日期和承诺保留出处。",
+        "success_signals": ["每条重要结论能够回到具体来源", "决定、未决问题和行动项没有混在一起", "执行版包含明确负责人、时间和下一步"],
+        "recovery": "如果纪要看似完整却无法执行，先停止润色，补查缺失的负责人、截止时间和出处；仍无证据的内容标成待确认，不替会议参与者做决定。"
+      }
+    },
+    {
+      "id": "manual-create-presentation",
+      "permalink": "#manual-create-presentation",
+      "content_type": "manual",
+      "title": "制作可编辑、可验收的演示文稿",
+      "summary": "先确认听众和大纲，用三页样稿定方向，再生成整套文件并逐页检查。",
+      "keywords": ["PPT", "演示文稿", "幻灯片", "presentation", "可编辑", "大纲", "样稿", "讲稿"],
+      "product_surface": ["ChatGPT Desktop", "ChatGPT Work"],
+      "audience": ["需要制作或修改 PPT、讲稿和演示材料的用户"],
+      "prerequisites": ["已明确听众、时长、希望促成的行动和可用材料"],
+      "official_sources": [{"label": "OpenAI：Work with files", "url": "https://learn.chatgpt.com/docs/artifacts-viewer"}],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-26",
+      "availability_scope": "ChatGPT Work 可创建演示文稿；桌面应用可预览受支持文件，Web 可在聊天中审阅和下载",
+      "related_content_ids": ["manual-write-task", "manual-plan-verify", "solution-content-project"],
+      "status": "published",
+      "limitations": ["文件能打开不代表内容、排版和可编辑性符合用途", "复杂字体、动画、企业模板和导出效果仍需在目标演示软件中检查", "涉及事实和数据的页面必须保留来源"],
+      "featured_order": 11,
+      "action": {
+        "entry": "从 ChatGPT Work 创建演示文稿任务",
+        "reason": "把内容结构、视觉方向和文件生成分阶段确认，可以在批量制作前发现错误方向。",
+        "steps": ["说明听众、演讲时长、希望听众采取的行动、已有材料，以及需要原生可编辑 PPTX 还是更重视展示效果。", "先只生成大纲，标明每部分目的、预计页数和核心结论；确认后再写逐页内容。", "只制作封面、普通内容页和数据页三页样稿，实际检查字体、留白、图表和元素能否编辑。", "样稿确认后再生成整套文件，并要求说明保存路径和已执行的检查。", "逐页检查文字溢出、图片变形、字号、页码、遮挡和数据来源；同时核对 PPTX 与导出版本页数。"],
+        "example": "请为 ___ 制作演示文稿。听众：___；时长：___；希望听众最后：___；素材：___。本轮先只给大纲和封面、内容页、数据页三页样稿，不生成整套文件。必须原生可编辑，并列出验收方法。",
+        "success_signals": ["大纲与听众和目标行动一致", "三类样稿的视觉和可编辑性已确认", "整套文件逐页检查且关键事实有来源"],
+        "recovery": "如果整套方向不对，回到大纲或三页样稿阶段，不继续批量修饰；如果只有局部问题，明确页码和需要保留的部分，只重做该页。"
+      }
+    },
+    {
+      "id": "manual-browser-computer-use",
+      "permalink": "#manual-browser-computer-use",
+      "content_type": "manual",
+      "title": "让 Codex 操作网页与桌面软件",
+      "summary": "优先使用结构化工具；必须看界面时，再用 Browser 或 Computer Use 完成范围明确、可复查的操作。",
+      "keywords": ["Browser", "Computer Use", "网页操作", "桌面软件", "点击", "浏览器", "界面测试", "自动操作"],
+      "product_surface": ["ChatGPT Desktop", "Codex", "ChatGPT Work"],
+      "audience": ["需要测试网页、操作设置或复现图形界面问题的用户"],
+      "prerequisites": ["所在地区、设备和工作区支持对应能力", "已安装或启用所需插件并授予目标应用权限"],
+      "official_sources": [
+        {"label": "OpenAI：Browser", "url": "https://learn.chatgpt.com/docs/browser"},
+        {"label": "OpenAI：Computer Use", "url": "https://learn.chatgpt.com/docs/computer-use"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-26",
+      "availability_scope": "Browser 可用于 ChatGPT Web 和桌面应用；桌面内置浏览器的 Computer Use 适用于 ChatGPT Work 或 Codex；Computer Use 的地区、系统和工作区可用性受限",
+      "related_content_ids": ["manual-permissions", "manual-app-review", "solution-website-change", "solution-troubleshoot"],
+      "status": "published",
+      "limitations": ["网页内容是不可信上下文，网站权限不等于内容可信或所有动作获批", "内置 Browser 不能自动上传文件", "登录、提交信息、付款、公开发布、删除数据和变更权限必须保留人工确认", "能点击按钮不代表后台数据已经保存"],
+      "featured_order": 12,
+      "action": {
+        "entry": "ChatGPT 桌面应用中的内置 Browser；只有跨应用或 GUI 必需时使用 Computer Use",
+        "reason": "结构化插件或 MCP 更适合稳定读取和写入；视觉操作用于必须看见、点击或复现界面状态的任务。",
+        "steps": ["先判断是否有插件、MCP 或文件/命令方式能完成；只有必须看界面时才启用视觉操作。", "写清应用、页面或 URL、目标状态、允许动作、禁止动作和遇到什么必须停止。", "页面有相似按钮或风险较高时，先让 Codex 描述当前画面和准备操作的位置。", "对登录、发送、购买、发布、删除、改权限等敏感动作拒绝自动放行，逐次人工确认。", "操作完成后重新读取界面、状态或数据，记录结果和错误；仓库任务还要单独检查 Diff。"],
+        "example": "使用 ___ 打开 ___，只完成：___。允许：___；禁止：登录后发送、购买、发布、删除和修改权限。遇到相似按钮、弹窗或任何不确定状态时先停下描述画面。完成后重新检查最终状态并给出证据。",
+        "success_signals": ["操作范围和停止条件在执行前明确", "敏感动作没有跳过人工确认", "最终状态经过重新读取或复现验证"],
+        "recovery": "如果界面与预期不同或误点风险上升，立即停止输入和点击，记录当前应用、窗口和画面；不要靠连续尝试恢复，先确认是否有更安全的结构化入口。"
+      }
+    },
+    {
+      "id": "manual-monitor-updates",
+      "permalink": "#manual-monitor-updates",
+      "content_type": "manual",
+      "title": "建立专业资讯监控与定期摘要",
+      "summary": "先定义来源、重要变化和去重规则，手动跑通后再定时，并持续检查噪声与遗漏。",
+      "keywords": ["资讯监控", "定期摘要", "行业动态", "监控", "去重", "定时搜索", "更新", "日报", "周报"],
+      "product_surface": ["ChatGPT Desktop", "ChatGPT Work", "Scheduled tasks"],
+      "audience": ["需要持续跟踪作者、机构、产品、仓库或政策变化的用户"],
+      "prerequisites": ["已经列出优先来源和真正值得报告的变化", "同一流程已手动运行并检查过一次"],
+      "official_sources": [
+        {"label": "OpenAI：Scheduled tasks", "url": "https://learn.chatgpt.com/docs/automations"},
+        {"label": "OpenAI：Browser", "url": "https://learn.chatgpt.com/docs/browser"}
+      ],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
+      "official_published_at": null,
+      "verified_at": "2026-08-26",
+      "availability_scope": "Scheduled tasks 可在支持的 Web、移动端或桌面入口管理；使用本地项目时需要电脑开机、桌面应用运行且项目仍可访问",
+      "related_content_ids": ["manual-projects", "manual-extensions", "solution-research-decision", "solution-recurring-automation"],
+      "status": "published",
+      "limitations": ["二次转述只能作为线索，关键变化要回到官方或原始来源", "一次定时运行不能证明长期稳定或没有遗漏", "可用套餐、事件触发和工作区权限可能不同"],
+      "featured_order": 13,
+      "action": {
+        "entry": "先在普通 ChatGPT Work 中手动完成一次，再创建 Scheduled task",
+        "reason": "先验证来源质量、去重和价值判断，才能避免把噪声稳定地自动化。",
+        "steps": ["列出要关注的作者、机构、产品页面、仓库和关键词，并标明官方或原始来源优先级。", "定义什么变化值得报告、时间范围、地区和排除条件；每条结果保留原链接、发布时间、事件时间和价值说明。", "先手动运行一次，抽查关键事实、重复项、旧闻重发和证据缺口。", "结果达到标准后再创建 Scheduled task，明确频率、输出位置、失败通知和是否允许重试。", "检查前几次真实运行；持续只有转述的来源降低优先级，噪声词增加排除条件，并保留未查到和不确定项。"],
+        "example": "先手动生成一次 ___ 监控摘要，本轮不要创建定时任务。优先来源：___；时间范围：___；只报告：___；排除：___。每条保留原链接、发布时间、事件时间、价值说明，并与这份历史记录去重：___。",
+        "success_signals": ["关键变化来自可追溯的一手来源", "旧闻和重复转述被识别", "首次手动结果通过后才进入定时运行，并能看到失败"],
+        "recovery": "如果摘要很长却没有价值，先暂停定时任务，把标准缩到少数高优先级来源和明确变化；如果本地任务未运行，检查电脑、桌面应用和项目路径是否在计划时间可用。"
       }
     },
     {
@@ -370,6 +526,7 @@
       "audience": ["需要整理明确本地目录的用户"],
       "prerequisites": ["已确定目标文件夹"],
       "official_sources": [{"label": "OpenAI：Projects and chats", "url": "https://learn.chatgpt.com/docs/projects"}],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
       "official_published_at": null,
       "verified_at": "2026-08-23",
       "availability_scope": "只连接目标文件夹的本地项目",
@@ -391,6 +548,7 @@
       "audience": ["需要证据支持决策的用户"],
       "prerequisites": ["已明确要做的决定和主要限制"],
       "official_sources": [{"label": "OpenAI：Use ChatGPT", "url": "https://learn.chatgpt.com/docs/use-chatgpt"}],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
       "official_published_at": null,
       "verified_at": "2026-08-23",
       "availability_scope": "ChatGPT Work；需持续复用资料时可放入 Project",
@@ -412,6 +570,7 @@
       "audience": ["需要分析文件或业务数据的用户"],
       "prerequisites": ["已准备任务需要的数据副本", "知道要回答的业务问题"],
       "official_sources": [{"label": "OpenAI：Use ChatGPT", "url": "https://learn.chatgpt.com/docs/use-chatgpt"}],
+      "research_sources": [{"label": "研究材料：Miles Ma《Codex 进阶应用教程》", "url": "https://x.com/miles_mazy/status/2092507861167567243?s=46"}],
       "official_published_at": null,
       "verified_at": "2026-08-23",
       "availability_scope": "ChatGPT Work 处理附加文件",

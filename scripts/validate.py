@@ -127,6 +127,14 @@ def main() -> int:
         unknown_related = set(item["related_content_ids"]) - set(content_ids)
         assert not unknown_related, f"{item['id']} has unknown related ids: {unknown_related}"
 
+    research_urls = {
+        source["url"]
+        for item in contents
+        for source in item.get("research_sources", [])
+    }
+    assert "https://x.com/miles_mazy/status/2091339513134010554?s=46" in research_urls
+    assert "https://x.com/miles_mazy/status/2092507861167567243?s=46" in research_urls
+
     legacy_by_id = {scenario["id"]: scenario for scenario in scenarios}
     for solution in solutions:
         legacy = legacy_by_id[solution["legacy_scenario_id"]]

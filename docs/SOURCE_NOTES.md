@@ -1,6 +1,6 @@
 # 来源研究说明
 
-核验日期：2026-08-24
+核验日期：2026-08-26
 
 ## Serena 教程
 
@@ -16,6 +16,14 @@
 - 用途：用于识别新手学习顺序、界面与 Diff、Local/Worktree/Cloud、计划与验证、Skill/Plugin/MCP 等教程缺口。
 - 本项目处理：没有复制文章正文或截图；相关内容被原创重构为五篇独立手册，并逐项使用 OpenAI 当前官方资料核验。每篇手册在用户界面中将这篇文章单列为“研究材料”，与“官方依据”分开显示。
 - 当前限制：作者文章是第三方使用经验，不能单独证明功能名称、界面入口、套餐可用性或当前产品行为；“四层学习路线”是本指南的编辑建议，不是 OpenAI 官方课程。
+
+## Miles Ma 进阶应用教程
+
+- 来源：<https://x.com/miles_mazy/status/2092507861167567243?s=46>
+- 标题与发布日期：《Codex 进阶应用教程：普通人最常用的 10 个工作场景》，2026-08-26。
+- 用途：用于识别普通用户在软件安装、文件整理、材料汇总、数据分析、演示文稿、网页检索、界面操作、长期任务、固定工作流和资讯监控中的真实问题与验收方式。
+- 本项目处理：没有复制文章正文或截图。已有的文件整理、数据分析、研究决策、Project 和 Skill 手册补充为关联研究材料；新缺口被原创重构为软件安装、会议纪要、演示文稿、Browser/Computer Use 和资讯监控五篇手册。
+- 当前限制：文章中的场景与方法是第三方经验，不能单独证明 Codex 能安装任意软件、操作所有应用、访问所有网页、生成符合任意模板的 PPT，或让自动化长期稳定运行；具体能力和边界均以对应 OpenAI 当前官方资料为准。
 
 ## OpenAI 官方资料
 
@@ -39,12 +47,18 @@
   - 用于核验 Git 前置条件、并行隔离、Handoff 与被忽略文件边界。
 - Best practices：<https://learn.chatgpt.com/docs/learn/best-practices>
   - 用于核验复杂任务先计划、完成后验证以及按需扩展的使用建议。
-- Skills：<https://learn.chatgpt.com/docs/skills>
+- Skills：<https://learn.chatgpt.com/docs/customization/overview#skills>
   - 用于核验 Skill 是可复用的说明、参考资料和辅助脚本集合。
 - Build plugins：<https://learn.chatgpt.com/docs/build-plugins>
   - 用于核验 Plugin 是可安装包，可包含 Skill、MCP server 或两者。
 - Model Context Protocol：<https://learn.chatgpt.com/docs/extend/mcp>
   - 用于核验 MCP 连接模型与外部工具、上下文的用途和客户端范围。
+- Work with files：<https://learn.chatgpt.com/docs/artifacts-viewer>
+  - 用于核验文档、演示文稿和表格的创建、预览、批注、保存路径与结果检查。
+- Browser：<https://learn.chatgpt.com/docs/browser>
+  - 用于核验内置浏览器、Browser Computer Use、敏感操作确认和不可信页面内容边界。
+- Computer Use：<https://learn.chatgpt.com/docs/computer-use>
+  - 用于核验桌面应用的视觉操作、系统与应用权限、适用任务和结构化工具优先原则。
 - Scheduled tasks：<https://learn.chatgpt.com/docs/automations>
   - 用于核验定时任务入口；产品仍要求先手动跑通流程。
 - Troubleshooting：<https://learn.chatgpt.com/docs/reference/troubleshooting>
@@ -64,5 +78,6 @@
 - 某项功能已对所有套餐、地区、操作系统或工作区开放；
 - Serena 教程中的界面名称与当前产品完全一致；
 - Miles Ma 教程中的界面、术语、学习顺序或可用性等同于 OpenAI 官方承诺；
+- Miles Ma 进阶教程中的十个场景都能在任意套餐、地区、系统和应用中直接使用；
 - RSS 条目变化一定要求修改某个场景；
 - 本地实现、验证通过或更新候选等同于发布或真实用户验收。
